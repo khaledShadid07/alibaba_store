@@ -1,0 +1,15 @@
+h1 {
+  color: red;
+}
+
+.above_nav {
+  width: 100vw;
+  height: 40px;
+  background-image: url("https://s.alicdn.com/@img/imgextra/i2/O1CN01qwCSDG1u0bdVzDsat_!!6000000005975-2-tps-3840-80.png");
+  background-position: center;
+  background-size:cover;
+  background-color: rgb(14, 37, 57);
+  --hugo5-count-down-cell-bg: #e20000;
+  --hugo5-count-down-cell-color: #fff;
+  --hugo5-count-down-text-color: #fff;
+}
