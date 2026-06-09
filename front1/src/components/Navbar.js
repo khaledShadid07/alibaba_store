@@ -1,6 +1,15 @@
 import logo from '../assets/Alibaba-Logo.png'
 import './Navbar.css'
 import flag from '..//assets/jordan-flag-logo-removebg-preview.png'
+import pic1_main from '..//assets/pic1_main.avif'
+import pic2_main from '..//assets/pic2_main.avif'
+import pic3_main from '..//assets/pic3_main.avif'
+import pic4_main from '..//assets/pic4_main.avif'
+
+import pic1_main2 from '..//assets/pic1_main2.avif'
+import pic2_main2 from '..//assets/pic2_main2.avif'
+import pic3_main2 from '..//assets/pic3_main2.avif'
+import pic4_main2 from '..//assets/pic4_main2.avif'
 const Navbar = () => {
   return (
     <>
@@ -13,7 +22,7 @@ const Navbar = () => {
         </section>
 
         <section className='d-flex align-items-center mb-1 flex-grow-1 mx-4'>
-          <input placeholder='digital cameras' className='nav-search  rounded-5 p-4 flex-grow-1'>
+          <input placeholder='digital cameras' className='nav-search  rounded-5 p-4  flex-grow-1'>
           </input>
 
           <button className='search-btn rounded-5'>
@@ -73,7 +82,7 @@ const Navbar = () => {
 
       </nav>
 
-      <nav className='nb-container2 d-flex flex-wrap align-items-center align-content-center justify-content-between mx-4 border-bottom border-2'>
+      <nav className='nb-container2 d-flex flex-wrap align-items-center align-content-center justify-content-between m-2 border-bottom border-2'>
 
         <section className='d-flex align-items-center flex-wrap align-content-center justify-content-center'>
           <div className='nb-container2-item p-1 d-flex '>
@@ -97,6 +106,7 @@ const Navbar = () => {
         </section>
 
       </nav>
+
     </>
   )
 }
