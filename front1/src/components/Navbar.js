@@ -1,4 +1,5 @@
 import logo from '../assets/Alibaba-Logo.png'
+import { Link } from 'react-router-dom'
 import './Navbar.css'
 import flag from '..//assets/jordan-flag-logo-removebg-preview.png'
 import pic1_main from '..//assets/pic1_main.avif'
@@ -58,18 +59,24 @@ const Navbar = () => {
             </svg>
           </div>
 
+  <Link to="/SignIn" style={{textDecoration:'none'}}>
+
           <div className='nav-left-4 me-4 d-flex align-items-center'>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="black" className=" bi bi-person" viewBox="0 0 16 16">
               <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
             </svg>
-            <div className='deliver-to fw-bold '>Sign in</div>
+          
+           <div  className='deliver-to fw-bold '>Sign in</div>
+            
           </div>
-
+</Link>
           <div className='nav-left-4 me-4 d-flex align-items-center'>
             <div className='nav-left-5 me-4 d-flex align-items-center'>
+              <Link to="/SignUp">
               <button className='signup-btn rounded-5 fw-bold'>
                 Sign up
               </button>
+              </Link>
             </div>
 
 

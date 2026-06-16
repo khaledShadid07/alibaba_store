@@ -1,0 +1,7 @@
+.signin-img{background-image: url(../assets/signin.avif);background-position: center;background-size: cover;height: 100vh;min-width: 350px;}
+
+.sign-txt{font-size: 25px;}
+.sign-txt-2{font-size: 14px;text-decoration: underline;margin-left: 210px;}
+.form-sign{min-width:350px ;height: 50px;}
+.signin-btn{min-width:350px ;height: 50px;border: none;background-color: #d64000;color: white;}
+.span-signin{text-decoration: underline;cursor: pointer;font-weight: 500;}
