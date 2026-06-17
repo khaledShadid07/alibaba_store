@@ -3,14 +3,25 @@ import logo from '../assets/Alibaba-Logo.png'
 import google from '../assets/google.png'
 import facebook from '../assets/facebook.avif'
 import linked from '../assets/linked.jpg'
-import signin from '../assets/signin.avif'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
+import axios from 'axios';
+
+
+
 const SignUp = () => {
+  const navigate = useNavigate();
+  const URL = process.env.REACT_APP_URL|| 'http://localhost:5000'; 
+  const [userdata, setuserdata] = useState({
+    email: '',
+    password: ''
+  })
   return (
     <>
       <section>
-      
-          <Link to='/'><img style={{ width: '220px' }} src={logo} alt="logo" /></Link>
+
+        <Link to='/'><img style={{ width: '220px' }} src={logo} alt="logo" /></Link>
       </section>
 
       <main className='d-flex flex-wrap gap-4 mx-2'>
@@ -26,38 +37,52 @@ const SignUp = () => {
           <section>
 
 
-            <div style={{cursor:'pointer'}} className='d-flex align-items-center text-dark  form-sign rounded-2 border border-secondary p-1' >
+            <div style={{ cursor: 'pointer' }} className='d-flex align-items-center text-dark  form-sign rounded-2 border border-secondary p-1' >
               <img className='ms-2 me-4' style={{ width: '50px' }} src={google} alt='pic' />
               <div className='text-center fw-bold'>Continue with Google </div>
             </div>
 
-          
+
             <br />
-            <div style={{cursor:'pointer'}} className='d-flex align-items-center text-dark  form-sign rounded-2 border border-secondary p-1' >
+            <div style={{ cursor: 'pointer' }} className='d-flex align-items-center text-dark  form-sign rounded-2 border border-secondary p-1' >
               <img className='ms-3 me-4' style={{ width: '34px' }} src={linked} alt='pic' />
               <div className='ms-2 text-center fw-bold'>Continue with LinkedIn </div>
             </div>
-           
+
             <br />
-            <div style={{cursor:'pointer'}} className='d-flex align-items-center text-dark  form-sign rounded-2 border border-secondary p-1' >
+            <div style={{ cursor: 'pointer' }} className='d-flex align-items-center text-dark  form-sign rounded-2 border border-secondary p-1' >
               <img className='me-2' style={{ width: '70px' }} src={facebook} alt='pic' />
               <div className='ms-1 text-center fw-bold'>Continue with Facebook </div>
-            </div>            
-            
-            
+            </div>
+
+
 
           </section>
 
 
           <p className='   fw-bold mt-4 text-secondary'> OR</p>
-          <form>
-            <input placeholder='Enter your email address' className=' text-secondary form-sign rounded-2 border border-secondary p-1' />
+          {/* foooorm */}
+          <form onSubmit={async (e) => {
+            e.preventDefault();
+            try {
+              console.log('url:',URL);
+              const res = await axios.post(`${URL}/users/register`,userdata);
+              console.log(res.data)
+              alert('your register successufuly done')
+              navigate('/SignIn')
+            }
+
+            catch(error){console.log(error)}
+
+
+          }}>
+            <input placeholder='Enter your email address' className=' text-secondary form-sign rounded-2 border border-secondary p-1' value={userdata.email} onChange={(e) => setuserdata({ ...userdata, email: e.target.value })} />
             <br />
             <br />
-            <input placeholder='Enter your password' className=' text-secondary form-sign rounded-2 border border-secondary p-1' />
+            <input placeholder='Enter your password' className=' text-secondary form-sign rounded-2 border border-secondary p-1' value={userdata.password} onChange={(e) => setuserdata({ ...userdata, password: e.target.value })} />
             <br />
             <br />
-             <button className='signin-btn rounded-5 fw-bold'>Continue</button>
+            <button type='submit' className='signin-btn rounded-5 fw-bold'>Continue</button>
           </form>
 
         </div>

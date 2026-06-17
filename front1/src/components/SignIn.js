@@ -5,7 +5,19 @@ import facebook from '../assets/facebook.avif'
 import linked from '../assets/linked.jpg'
 import signin from '../assets/signin.avif'
 import { Link } from 'react-router-dom'
-const signIn = () => {
+
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
+import axios from 'axios';
+
+const SignIn = () => {
+  const navigate = useNavigate();
+  const URL = process.env.REACT_APP_URL|| 'http://localhost:5000'; 
+  const [userdata, setuserdata] = useState({
+    email: '',
+    password: ''
+  })
+
   return (
     <>
       <section>
@@ -23,12 +35,26 @@ const signIn = () => {
           <p className='sign-txt  fw-bold text-center'>Sign in</p>
 
 
-          <form>
+          <form onSubmit={async (e) => {
+            e.preventDefault();
+            try {
+              console.log('url:',URL);
+              const res = await axios.post(`${URL}/users/login`,userdata);
+              console.log(res.data)
+              localStorage.setItem('token',res.data.token);
+              alert('you login successufuly ')
+              navigate('/')
+            }
+
+            catch(error){console.log(error)}
+
+
+          }}>
             <p className=' sign-txt-2  fw-bold '>Sign in with a code</p>
-            <input placeholder='Email address' className=' text-secondary form-sign rounded-2 border border-secondary p-1' />
+            <input placeholder='Email address' className=' text-secondary form-sign rounded-2 border border-secondary p-1' value={userdata.email} onChange={(e) => setuserdata({ ...userdata, email: e.target.value })}/>
             <br />
             <br />
-            <input placeholder='Password' className=' text-secondary form-sign rounded-2 border border-secondary p-1' />
+            <input placeholder='Password' className=' text-secondary form-sign rounded-2 border border-secondary p-1'  value={userdata.password} onChange={(e) => setuserdata({ ...userdata, password: e.target.value })}/>
             <p className=' sign-txt-2  fw-bold mt-2'> Forget password ?</p>
 
             <button className='signin-btn rounded-5 fw-bold'>Continue</button>
@@ -59,4 +85,4 @@ const signIn = () => {
   )
 }
 
-export default signIn
+export default SignIn
