@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const URL = process.env.REACT_APP_URL|| 'http://localhost:5000'; 
+  const URL = process.env.REACT_APP_URL|| 'https://alibaba-store-3.onrender.com'; 
   const [userdata, setuserdata] = useState({
     email: '',
     password: ''
