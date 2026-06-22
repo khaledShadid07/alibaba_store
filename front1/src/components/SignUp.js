@@ -11,6 +11,7 @@ import axios from 'axios';
 
 
 const SignUp = () => {
+  const [loading,setLoading]=useState(false);
   const navigate = useNavigate();
   const URL = process.env.REACT_APP_URL|| 'https://alibaba-store-3.onrender.com'; 
   const [userdata, setuserdata] = useState({
@@ -61,28 +62,36 @@ const SignUp = () => {
 
 
           <p className='   fw-bold mt-4 text-secondary'> OR</p>
-          {/* foooorm */}
+          {/* fooooooooooooooooooooooorm */}
           <form onSubmit={async (e) => {
             e.preventDefault();
+            setLoading(true)
             try {
               console.log('url:',URL);
               const res = await axios.post(`${URL}/users/register`,userdata);
-              console.log(res.data)
-              alert('your register successufuly done')
+              
+              setuserdata({email:'',password:''});
+               
+              alert('You have been successfully sign up')
               navigate('/SignIn')
             }
 
-            catch(error){console.log(error)}
-
+            catch(error){
+              const errorMsg = error.response?.data?.message || error.message;
+              alert(errorMsg);
+            
+            }
+            
+            finally{setLoading(false)}
 
           }}>
-            <input placeholder='Enter your email address' className=' text-secondary form-sign rounded-2 border border-secondary p-1' value={userdata.email} onChange={(e) => setuserdata({ ...userdata, email: e.target.value })} />
+            <input type="email" placeholder='Enter your email address' className=' text-secondary form-sign rounded-2 border border-secondary p-1' value={userdata.email} onChange={(e) => setuserdata({ ...userdata, email: e.target.value })} />
             <br />
             <br />
-            <input placeholder='Enter your password' className=' text-secondary form-sign rounded-2 border border-secondary p-1' value={userdata.password} onChange={(e) => setuserdata({ ...userdata, password: e.target.value })} />
+            <input type="password" placeholder='Enter your password' className=' text-secondary form-sign rounded-2 border border-secondary p-1' value={userdata.password} onChange={(e) => setuserdata({ ...userdata, password: e.target.value })} />
             <br />
             <br />
-            <button type='submit' className='signin-btn rounded-5 fw-bold'>Continue</button>
+            <button type='submit' className='signin-btn rounded-5 fw-bold'>{loading?'Signing up ⌛...':'Signup'}</button>
           </form>
 
         </div>
