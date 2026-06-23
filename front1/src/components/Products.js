@@ -35,7 +35,7 @@ const Products = () => {
            You've reached the end of recommendations
     </div>
 
-    <div className='d-flex flex-wrap gap-5 align-items-top mb-4 justify-content-center align-content-center'>
+    <div className='d-flex flex-wrap gap-5 align-items-top mb-4 justify-content-center align-content-center text-center'>
        
        <section>
          <p className='fw-bold mb-2'>Get support</p>
